@@ -7,13 +7,13 @@
       function validarDados($num1, $num2, String $op){
          $erroMsg = "";
          if (!is_numeric($num1)) {
-            $erroMsg = "Valor 1 não é numerico";
+            $erroMsg = "Valor 1 não é valido";
          }else if (!is_numeric($num2)) {
-               $erroMsg = "Valor 2 não é numerico";
+               $erroMsg = "Valor 2 não é valido";
          }
 
          if ($op == "divi" and $num2 == 0) {
-               $erroMsg = "Parametro b não pode ser 0 para divisão";
+               $erroMsg = "Valor 2  não pode ser 0 para divisão";
          }
          return $erroMsg;
    }
