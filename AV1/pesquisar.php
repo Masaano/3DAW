@@ -12,9 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $nome = $_POST['nome'];
     $verify = true;
-
-    $sql = "SELECT * FROM disciplina where nome like '%$nome%' ";
-    $result = $conn->query($sql);
+    
+    
 }
 ?>
 
@@ -24,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <head>
         <meta charset="UTF-8">
-        <title>Produtos - Barbearia Alura</title>
+        <title>Pesquisar Disciplina</title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
     </head>
@@ -39,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <li><a href="listar.php">Listar Disciplina</a></li>
                         <li><a href="pesquisar.php">Pesquisar Disciplina</a></li>
                         <li><a href="criarUsuario.php">Criar Usuário</a></li>
+                        <li><a href="listarUsuario.php">Listar Usuário</a></li>
                     </ul>
                 </nav>
             </div>
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="pesquisar.php" method="post" class="pesquisa">
                     <h2>Pesquisar Disciplina</h2>
                     <label for="nome" class="pesquisa-label">Nome</label>
-                    <input type="text" class="input-pesquisa" name="nome" id="nome" > 
+                    <input type="text" class="input-pesquisa" name="nome" id="nome" value="Null" > 
 
                     <input type="submit" value="Pesquisar" class="pesquisar">
                 </form>
@@ -67,6 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <tbody>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if(isset($nome)){
+                    $sql = "SELECT * FROM disciplina where nome like '%$nome%' ";
+                    $result = $conn->query($sql);
                     while ($linha = $result->fetch_assoc()) {
             ?>
                 <tr>
@@ -80,14 +83,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </tr>
             <?php
                 }
-            }
+            } else{
+                echo "Escrava algo para se pesquisar";
+                }
+        }
+            
+            
             ?>
                     </tbody>
                 </table>
         </main>
 
         <footer>
-            <p class="copyright">&copy; Copyright Barbearia Alura - 2021</p>
+            <p class="copyright">&copy; Copyright Mateus S Martins - 2021</p>
         </footer>
     </body>
 </html>

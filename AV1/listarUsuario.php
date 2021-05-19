@@ -9,7 +9,7 @@
     if (!$conn) {
         die("Conexão com erro: " . mysqli_connect_error());
     }
-    $sql = "SELECT * FROM disciplina ";
+    $sql = "SELECT * FROM usuario ";
     $result = $conn->query($sql);
 ?>
 
@@ -19,7 +19,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Listar Disciplina</title>
+        <title>Listar Usuário</title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
     </head>
@@ -41,17 +41,15 @@
         </header>
 
         <main>
-            <h2>Listar Disciplina</h2>
+            <h2>Listar Usuário</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Periodo</th>
-                        <th>Id do pré-requisito</th>
-                        <th>Crédito</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,13 +57,11 @@
                 while ($linha = $result->fetch_assoc()) {
             ?>
             <tr>
-                <td><?php echo $linha["idDisciplina"];?></td>
+                <td><?php echo $linha["idUsuario"];?></td>
                 <td><?php echo $linha["nome"];?></td>
-                <td><?php echo $linha["periodo"];?></td>
-                <td><?php echo $linha["idPreRequisito"];?></td>
-                <td><?php echo $linha["creditos"];?></td>
-                <td><a href="editar.php?id=<?php echo $linha["idDisciplina"]; ?>">Editar</a></td>
-                <td><a href="excluir.php?id=<?php echo $linha["idDisciplina"]; ?>">Excluir</a></td>
+                <td><?php echo $linha["email"];?></td>
+                <td><?php echo $linha["senha"];?></td>
+                <td><?php echo $linha["tipo"];?></td>
             </tr>
             <?php
                 }

@@ -1,42 +1,66 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $servidor = "localhost";
     $usuario = "root";
     $senha = "";
     $nomeBanco = "AV1";
+    
 
     $conn = mysqli_connect($servidor, $usuario, $senha,$nomeBanco);
     if (!$conn) {
         die("Conexão com erro: " . mysqli_connect_error());
-    }
-    
-    $id = $_POST['id'];
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $tipo = $_POST['tipo'];
+    }   
+
+    $file=$_POST['url'];
     $verify = true;
 
-    if(!is_numeric($id)){
-        $veryfy = false;
-    }else if($id<=0){
-         $verify = false;
-    }
-
-    if($tipo=='Professor'){
-    }else if($tipo=='Aluno'){
-    }else if($tipo=='Coordenador'){
-    }else{
-        $verify = false;
-    }
-
-    if($verify){
-        $sql = "Insert into usuario(idUsuario, nome, email, senha, tipo) VALUES ('$id','$nome','$email','$senha','$tipo')";
-        $result = $conn->query($sql);
-    }else{
-        echo"Dado Errado";
-    }
+    $content = fopen($file, "r");
+    if ($content) {
+        $total = 0;
+        $collection = array();
+        while (($line = fgets($content)) !== false) {
     
+            $data = explode("|",$line);
+            $collection[$total] = array(
+                        'idUsuario' => $data[0],
+                        'nome'        => $data[1],
+                        'email'        => $data[2],
+                        'senha'      => $data[3],
+                        'tipo'   => $data[4],
+                        );
+
+                        if(!is_numeric($data[0])){
+                        $veryfy = false;
+                    }else if($data[0]<=0){
+                            $verify = false;
+                    }
+
+                    if(!isset($data[1])){
+                        $verify = false;
+                    }
+
+                    if(!isset($data[2])){
+                        $verify = false;
+                    }
+
+                    if(!isset($data[3])){
+                        $verify = false;
+                    }
+                    if(!isset($data[4])){
+                        $verify = false;
+                    }
+
+            if($verify){
+                $sql = "Insert into usuario(idUsuario, nome, email, senha, tipo) VALUES ('$data[0]','$data[1]','$data[2]','$data[3]','$data[4]')";
+                $result = $conn->query($sql);
+            }else{
+                echo"Dado Errado";
+            }
+            $total++;       
+        }
+           
+    }   
+     
 }
 
 ?>
@@ -60,7 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <li><a href="index.html">Home</a></li>
                         <li><a href="criarDisciplina.php">Criar Disciplina</a></li>
                         <li><a href="listar.php">Listar Disciplina</a></li>
+                        <li><a href="pesquisar.php">Pesquisar Disciplina</a></li>
                         <li><a href="criarUsuario.php">Criar Usuário</a></li>
+                        <li><a href="listarUsuario.php">Listar Usuário</a></li>
                     </ul>
                 </nav>
             </div>
@@ -69,34 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <main>
             <form action="criarUsuario.php" method="post">
                 <h2>Criar Usuário</h2>
-                <label for="idUsuari">Id do Usuario</label>
-                <input type="number" class="input-padrao" name="id" id="idUsuari" >
-
-                <label for="nome">Nome</label>
-                <input type="text" class="input-padrao" name="nome" id="nome" required> 
-
-                <label for="email">Email</label>
-                <input type="email" class="input-padrao" name="email" id="email" required placeholder="seuemail@dominio.com">
-
-                <label for="senha">Senha</label>
-                <input type="password" class="input-padrao" name="senha" id="senha" required>
-
-                <fieldset>
-                    <legend>Tipo de Usuário</legend>
-                    <label for="radio-email"><input type="radio" name="tipo" value="Professor" id="radio-prof">Professor</label>
-
-                    <label for="radio-telefone"><input type="radio" name="tipo" value="Aluno" id="radio-aluno" checked>Aluno</label>
-
-                    <label for="radio-whatsapp"><input type="radio" name="tipo" value="Coordenador" id="radio-coord" >Coordenador</label>
-                </fieldset>
-
+                <label for="urlUsuar">Url do Arquivo</label>
+                <input type="text" class="input-padrao" name="url" id="urlUsuar" required>
 
                 <input type="submit" value="Enviar formulário" class="enviar">
             </form>
         </main>
 
         <footer>
-            <p class="copyright">&copy; Copyright Barbearia Alura - 2021</p>
+            <p class="copyright">&copy; Copyright Mateus S Martins - 2021</p>
         </footer>
     </body>
 </html>

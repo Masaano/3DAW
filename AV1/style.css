@@ -151,18 +151,22 @@ nav{
      cursor: pointer;
  }
 
- .enviar,.update:hover{
+ .enviar:hover{
      background: darkorange;
      transform: scale(1.2)
  }
+ .update:hover{
+    background: darkorange;
+    transform: scale(1.2)
+}
 
  .pesquisar{
-    width: 40%;
-    padding: 15px 0;
+    width: 15%;
+    padding: 4px 0;
     background: orange;
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15px;
     border: none;
     border-radius: 5px;
     transition: 1s all;

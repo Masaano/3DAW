@@ -71,7 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <li><a href="index.html">Home</a></li>
                         <li><a href="criarDisciplina.php">Criar Disciplina</a></li>
                         <li><a href="listar.php">Listar Disciplina</a></li>
+                        <li><a href="pesquisar.php">Pesquisar Disciplina</a></li>
                         <li><a href="criarUsuario.php">Criar Usuário</a></li>
+                        <li><a href="listarUsuario.php">Listar Usuário</a></li>
                     </ul>
                 </nav>
             </div>
@@ -100,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </main>
 
         <footer>
-            <p class="copyright">&copy; Copyright Barbearia Alura - 2021</p>
+            <p class="copyright">&copy; Copyright Mateus S Martins - 2021</p>
         </footer>
     </body>
 </html>

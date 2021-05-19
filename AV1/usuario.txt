@@ -1,0 +1,2 @@
+2|Lucas Barroso|barLucas@gmail.com|lubar123|Professor
+Null|Aline Angelim|anlimne@gmail.com|ligean|Coordenador
