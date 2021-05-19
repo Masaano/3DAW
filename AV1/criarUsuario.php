@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $file=$_POST['url'];
     $verify = true;
-
+    
     $content = fopen($file, "r");
     if ($content) {
         $total = 0;
@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         'senha'      => $data[3],
                         'tipo'   => $data[4],
                         );
-
-                        if(!is_numeric($data[0])){
+                if($total!=0){
+                    if(!is_numeric($data[0])){
                         $veryfy = false;
                     }else if($data[0]<=0){
                             $verify = false;
@@ -50,12 +50,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         $verify = false;
                     }
 
-            if($verify){
-                $sql = "Insert into usuario(idUsuario, nome, email, senha, tipo) VALUES ('$data[0]','$data[1]','$data[2]','$data[3]','$data[4]')";
-                $result = $conn->query($sql);
-            }else{
-                echo"Dado Errado";
-            }
+                    if($verify){
+                        $sql = "Insert into usuario(idUsuario, nome, email, senha, tipo) VALUES ('$data[0]','$data[1]','$data[2]','$data[3]','$data[4]')";
+                        $result = $conn->query($sql);
+                    }else{
+                        echo"Dado Errado";
+                    }
+                }
+                    
             $total++;       
         }
            
