@@ -35,17 +35,16 @@ nav{
     top: 115px;
     right: 0;
 }
- .box{
+.box{
      position: relative;
      width: 1088px;
      margin: 0 auto;
- }
-
- .product{
+}
+.product{
      width: 940px;
      margin: 0 auto;
      padding: 50px 0;
- }
+}
 
  .product li{
      display: inline-block;
