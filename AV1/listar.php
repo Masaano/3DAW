@@ -9,7 +9,7 @@
     if (!$conn) {
         die("Conexão com erro: " . mysqli_connect_error());
     }
-    $sql = "SELECT * FROM disciplina";
+    $sql = "SELECT * FROM disciplina ";
     $result = $conn->query($sql);
 ?>
 
@@ -32,6 +32,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="criarDisciplina.php">Criar Disciplina</a></li>
                         <li><a href="listar.php">Listar Disciplina</a></li>
+                        <li><a href="pesquisar.php">Pesquisar Disciplina</a></li>
                         <li><a href="criarUsuario.php">Criar Usuário</a></li>
                     </ul>
                 </nav>
@@ -39,29 +40,37 @@
         </header>
 
         <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Periodo</th>
+                        <th>Id do pré-requisito</th>
+                        <th>Crédito</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
             <?php
-                echo "<table>";
-                echo "<thead>";
-                echo "<tr>";
-                echo "<th>Id</th><th>Nome</th><th>Periodo</th><th>Id do pré-requisito</th><th>Crédito</th>";
-                echo "</tr>";
-                echo "</thead>";
                 while ($linha = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td> " . $linha["idDisciplina"] . "</td>";
-                    echo "<br>";
-                    echo "<td> " . $linha["nome"] . "</td>";
-                    echo "<br>";
-                    echo "<td> " . $linha["periodo"] . "</td>";
-                    echo "<br>";
-                    echo "<td> " . $linha["idPreRequisito"] . "</td>";
-                    echo "<br>";
-                    echo "<td> " . $linha["creditos"] . "</td>";
-                    echo "<br>";
-                    echo "<tr>";
-                }
-                echo "</table>";
             ?>
+            <tr>
+                <td><?php echo $linha["idDisciplina"];?></td>
+                <td><?php echo $linha["nome"];?></td>
+                <td><?php echo $linha["periodo"];?></td>
+                <td><?php echo $linha["idPreRequisito"];?></td>
+                <td><?php echo $linha["creditos"];?></td>
+                <td><a href="editar.php?id=<?php echo $linha["idDisciplina"]; ?>">Editar</a></td>
+                <td><a href="excluir.php?id=<?php echo $linha["idDisciplina"]; ?>">Excluir</a></td>
+            </tr>
+            <?php
+                }
+            
+            ?>
+                </tbody>
+            </table>
         </main>
 
         <footer>
