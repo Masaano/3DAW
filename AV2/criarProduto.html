@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+        <meta charset="UTF-8">
+        <title>Home-Loja Ximbolé Bahiano</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="box">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="">Listar Produtos</a></li>
+                        <li><a href="">Adicionar Produtos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <form action="criarDisciplina.php" method="post">
+                <h2>Adicionar Produto</h2>
+                <label for="idProd">Id do Produto</label>
+                <input type="number" class="input-padrao" name="id" id="idProd" required >
+
+                <label for="codBarra">Código de Barra</label>
+                <input type="text" class="input-padrao" name="codigo" id="codBarra" required> 
+
+                <label for="nome">Nome</label>
+                <input type="text" class="input-padrao" name="nome" id="nome" required> 
+
+                <label for="fabricante">Fabricante</label>
+                <input type="text" class="input-padrao" name="fabricante" id="fabricante" required> 
+
+                <label for="categoria">Categoria</label>
+                <input type="text" class="input-padrao" name="categoria" id="categoria" required> 
+
+                <label for="tipoProduto">Tipo de Produto</label>
+                <input type="text" class="input-padrao" name="tipoProduto" id="tipoProduto" required> 
+
+                <label for="precoVenda">Preço de Venda</label>
+                <input type="number" class="input-padrao" name="precoVenda" id="precoVenda" required>
+
+                <label for="quantEstoque">Quantidade em Estoque</label>
+                <input type="number" class="input-padrao" name="quantEstoque" id="quantEstoque" required>
+
+                <label for="pesoGrama">Peso em Grama</label>
+                <input type="number" class="input-padrao" name="pesoGrama" id="pesoGrama" required>
+
+                <label for="descricao">Descrição</label>
+                <input type="text" class="input-padrao" name="descricao" id="descricao" required> 
+
+                <label for="link">Link da Imagem</label>
+                <input type="url" class="input-padrao" name="link" id="link" required> 
+
+                <label for="data">Data da Inclusão</label>
+                <input type="date" class="input-padrao" name="data" id="data" required> 
+
+
+                <input type="submit" value="Enviar formulário" class="enviar">
+            </form>
+        </main>
+
+        <footer>
+            <p class="copyright">&copy; Copyright Mateus S Martins - 2021</p>
+        </footer>
+    </body>
+</html>
