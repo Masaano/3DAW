@@ -9,6 +9,10 @@
         <title>Home-Loja Ximbolé Bahiano</title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
+        <script src="pegarCategoria.js"></script>
+        <script src="pegarTipo.js"></script>
+        <script src="criarProduto.js"></script>
+
     </head>
 
     <body>
@@ -17,21 +21,19 @@
                 <nav>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="">Listar Produtos</a></li>
-                        <li><a href="">Adicionar Produtos</a></li>
+                        <li><a href="listarProdutos.html">Listar Produtos</a></li>
+                        <li><a href="criarProduto.html">Adicionar Produtos</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
         <main>
-            <form action="criarDisciplina.php" method="post">
+            <form action="" method="POST" id="formProduto">
                 <h2>Adicionar Produto</h2>
-                <label for="idProd">Id do Produto</label>
-                <input type="number" class="input-padrao" name="id" id="idProd" required >
 
                 <label for="codBarra">Código de Barra</label>
-                <input type="text" class="input-padrao" name="codigo" id="codBarra" required> 
+                <input type="text" class="input-padrao" name="codBarra" id="codBarra" required> 
 
                 <label for="nome">Nome</label>
                 <input type="text" class="input-padrao" name="nome" id="nome" required> 
@@ -40,13 +42,17 @@
                 <input type="text" class="input-padrao" name="fabricante" id="fabricante" required> 
 
                 <label for="categoria">Categoria</label>
-                <input type="text" class="input-padrao" name="categoria" id="categoria" required> 
+                <select name="categoria" id="categoria" onchange="getTipo(this.id)">
+                    <option value="" selected></option>
+                </select>
 
                 <label for="tipoProduto">Tipo de Produto</label>
-                <input type="text" class="input-padrao" name="tipoProduto" id="tipoProduto" required> 
+                <select name="tipoProduto" id="tipoProduto">
+                    <option value="" selected></option>
+                </select> 
 
                 <label for="precoVenda">Preço de Venda</label>
-                <input type="number" class="input-padrao" name="precoVenda" id="precoVenda" required>
+                <input type="number" class="input-padrao" name="precoVenda" id="precoVenda" step="any" required>
 
                 <label for="quantEstoque">Quantidade em Estoque</label>
                 <input type="number" class="input-padrao" name="quantEstoque" id="quantEstoque" required>
@@ -58,13 +64,9 @@
                 <input type="text" class="input-padrao" name="descricao" id="descricao" required> 
 
                 <label for="link">Link da Imagem</label>
-                <input type="url" class="input-padrao" name="link" id="link" required> 
+                <input type="text" class="input-padrao" name="link" id="link" required> 
 
-                <label for="data">Data da Inclusão</label>
-                <input type="date" class="input-padrao" name="data" id="data" required> 
-
-
-                <input type="submit" value="Enviar formulário" class="enviar">
+                <input type="button" value="Enviar formulário" class="enviar" onclick="inserirProduto()">
             </form>
         </main>
 

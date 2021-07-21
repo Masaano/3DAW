@@ -1,14 +1,15 @@
-
-
 <!DOCTYPE html>
 
 <html lang="pt-br">
 
     <head>
         <meta charset="UTF-8">
-        <title>Listar Usuário</title>
+        <title>Listar Disciplina</title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
+        <script src="listaNomeCategoriaTipo.js"></script>
+        <script src="listarProdutos.js"></script>
+
     </head>
 
     <body>
@@ -17,26 +18,32 @@
                 <nav>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="">Listar Produtos</a></li>
-                        <li><a href="">Adicionar Produtos</a></li>
+                        <li><a href="listarProdutos.html">Listar Produtos</a></li>
+                        <li><a href="criarProduto.html">Adicionar Produtos</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
         <main>
-            <h2>Listar Produto</h2>
+            <h2>Listar Produtos</h2>
+            <label for="cod" class="pesquisa-label">Pesquisar Código de Barra</label>
+            <input type="text" class="input-pesquisa" name="cod" id="cod"> 
+
+            <input type="button" value="Pesquisar" class="pesquisar" onclick="escolha()">
             <table>
-                <thead>
+                <thead id="tHead">
                     <tr>
-                        <th>Código de barra</th>
+                        <th>Código de Barra</th>
                         <th>Nome</th>
                         <th>Categoria</th>
-                        <th>Preço de venda</th>
+                        <th>Preço de Venda</th>
                         <th>Estoque</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tCorpo">            
                 </tbody>
             </table>
         </main>
