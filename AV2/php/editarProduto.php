@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (!$conn) {
         die("Conexão com erro: " . mysqli_connect_error());
     }
+    $idProduto = $_GET['idProduto'];
     $codBarra = $_GET['codBarra'];
     $nome = $_GET['nome'];
     $fabricante = $_GET['fabricante'];
@@ -19,13 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $pesoGrama = $_GET['pesoGrama'];
     $descricao = $_GET['descricao'];
     $link = $_GET['link'];
-    $date = date('y/m/d');
-    $ativo = 'ATIVO';
+    $date = $_GET['data'];
+    $ativo = $_GET['ativo'];
 
     echo $tipoProduto;
 
-    $sql = "Insert into produto(idProduto, codigoBarra, nome, fabricante, categoria, tipoProduto, preco, quantidade, peso, descricao, linkImagem, dataInclusao, ativo) VALUES
-     (null,'$codBarra','$nome','$fabricante','$categoria','$tipoProduto','$precoVenda','$quantEstoque','$pesoGrama','$descricao','$link','$date','$ativo')";
+    $sql = "UPDATE `produto` SET `codigoBarra`='$codBarra',`nome`='$nome',`fabricante`='$fabricante',`categoria`='$categoria',`tipoProduto`='$tipoProduto',
+    `preco`='$precoVenda',`quantidade`='$quantEstoque',`peso`='$pesoGrama',`descricao`='$descricao',`linkImagem`='$link',`dataInclusao`='$date',
+    `ativo`='$ativo' WHERE idProduto = '$idProduto'";
     $result = $conn->query($sql);
     
      die();

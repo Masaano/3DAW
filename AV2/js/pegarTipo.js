@@ -2,7 +2,7 @@ function getTipo(idSelect){
 
     var selectTipo = document.getElementById("tipoProduto");
     var length = selectTipo.options.length;
-    for (i = length-2; i >= 0; i--) {
+    for (i = length-1; i >= 0; i--) {
     selectTipo.options[i] = null;
     }
 
@@ -29,7 +29,7 @@ function getTipo(idSelect){
         
         }
     }
-    xmlHttp.open("GET", "http://localhost/3DAW/AV2/pegarTipo.php?idCategoria="+ idCategoria, true);
+    xmlHttp.open("GET", "http://localhost/3DAW/AV2/php/pegarTipo.php?idCategoria="+ idCategoria, true);
     xmlHttp.send();
     console.log("requisição enviada");
 }

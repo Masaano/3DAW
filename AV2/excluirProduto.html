@@ -1,12 +1,17 @@
+
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
 
-    <head>
+<head>
         <meta charset="UTF-8">
-        <title>Home-Loja Ximbolé Bahiano</title>
+        <title>Excluir Produto-Loja Ximbolé Bahiano</title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
+        <script src="js/listaNomeCategoriaTipo.js"></script>
+        <script src="js/excluirProduto.js"></script>
+
     </head>
 
     <body>
@@ -25,8 +30,12 @@
         </header>
 
         <main>
-           
             
+            <h2>Excluir Produto</h2>
+
+            <label for="cod" class="pesquisa-label">Código de Barra</label>
+            <input type="text" class="input-pesquisa" name="cod" id="cod"  onchange="escolhe(this.value)" required> 
+        
         </main>
 
         <footer>

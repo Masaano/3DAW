@@ -62,17 +62,13 @@ function listaProduto(){
                 
                 var tdEditar = novaLinha.insertCell();
                 tdEditar.innerHTML = "<a href='editarProduto.html?codBarra="+obj[linha].codBarra+"'>Editar</a>";
-
-                var tdExcluir = novaLinha.insertCell();
-                tdExcluir.innerHTML = "<button onclick='removerProduto(this.tdCod)'>Excluir</button>";
-
                 
             }
                 
         
         }
     }
-    xmlHttp.open("GET", "http://localhost/3DAW/AV2/listaProduto.php?codBarra="+codBarra, true);
+    xmlHttp.open("GET", "http://localhost/3DAW/AV2/php/listaProduto.php?codBarra="+codBarra, true);
     xmlHttp.send();
     console.log("requisição enviada");
 }
@@ -115,8 +111,7 @@ function listarTodos(){
                 var tdEditar = novaLinha.insertCell(5);
                 tdEditar.innerHTML = "<a href='editarProduto.html?codBarra="+obj[linha].codBarra+"'>Editar</a>";
 
-                var tdExcluir = novaLinha.insertCell(6);
-                tdExcluir.innerHTML = "<button onclick='removerProduto(this.tdCod)'>Excluir</button>";
+                
 
                 
             }
@@ -124,7 +119,7 @@ function listarTodos(){
         
         }
     }
-    xmlHttp.open("GET", "http://localhost/3DAW/AV2/listarProdutos.php", true);
+    xmlHttp.open("GET", "http://localhost/3DAW/AV2/php/listarProdutos.php", true);
     xmlHttp.send();
     console.log("requisição enviada");
 }

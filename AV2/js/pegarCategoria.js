@@ -16,6 +16,6 @@ xmlHttp.onreadystatechange = function() {
     
     }
 }
-xmlHttp.open("GET", "http://localhost/3DAW/AV2/pegarCategoria.php", true);
+xmlHttp.open("GET", "http://localhost/3DAW/AV2/php/pegarCategoria.php", true);
 xmlHttp.send();
 console.log("requisição enviada");

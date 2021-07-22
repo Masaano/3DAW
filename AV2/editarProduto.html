@@ -6,12 +6,14 @@
 
 <head>
         <meta charset="UTF-8">
-        <title>Adicionar Produto-Loja Ximbolé Bahiano</title>
+        <title>Editar Produto-Loja Ximbolé Bahiano</title>
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="style.css">
+        
+        <script src="js/listaNomeCategoriaTipo.js"></script>
         <script src="js/pegarCategoria.js"></script>
         <script src="js/pegarTipo.js"></script>
-        <script src="js/criarProduto.js"></script>
+        <script src="js/editarProduto.js"></script>
 
     </head>
 
@@ -24,7 +26,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="listarProdutos.html">Listar Produtos</a></li>
                         <li><a href="criarProduto.html">Adicionar Produtos</a></li>
-                        <li><a href="excluirProduto.html">Excluir Produtos</a></li>
+                        <li><a href="excluirProduto.html">ExcluirProdutos</a></li>
                     </ul>
                 </nav>
             </div>
@@ -32,10 +34,10 @@
 
         <main>
             <form action="" method="POST" id="formProduto">
-                <h2>Adicionar Produto</h2>
+                <h2>Editar Produto <a id="idProduto">ID</a></h2>
 
                 <label for="codBarra">Código de Barra</label>
-                <input type="text" class="input-padrao" name="codBarra" id="codBarra" minlength="11" maxlength="11" placeholder="xxxxxxxxxxx" required> 
+                <input type="text" class="input-padrao" name="codBarra" id="codBarra" required> 
 
                 <label for="nome">Nome</label>
                 <input type="text" class="input-padrao" name="nome" id="nome" required> 
@@ -45,12 +47,10 @@
 
                 <label for="categoria">Categoria</label>
                 <select name="categoria" id="categoria" onchange="getTipo(this.id)">
-                    <option value="" selected></option>
                 </select>
 
                 <label for="tipoProduto">Tipo de Produto</label>
                 <select name="tipoProduto" id="tipoProduto">
-                    <option value="" selected></option>
                 </select> 
 
                 <label for="precoVenda">Preço de Venda</label>
@@ -63,14 +63,19 @@
                 <input type="number" class="input-padrao" name="pesoGrama" id="pesoGrama" required>
 
                 <label for="descricao">Descrição</label>
-                <textarea class="input-padrao" name="descricao" id="descricao" cols="70" rows="10" maxlength="500"></textarea required>
+                <input type="text" class="input-padrao" name="descricao" id="descricao" required> 
 
                 <label for="link">Link da Imagem</label>
                 <input type="text" class="input-padrao" name="link" id="link" required> 
 
-                <input type="button" value="Enviar formulário" class="enviar" onclick="inserirProduto()">
+                <label for="data">Data de Inclusão</label>
+                <input type="date" class="input-padrao" name="data" id="data" required>
+
+                <label for="ativo">ATIVO</label>
+                <input type="text" class="input-padrao" name="ativo" id="ativo" required>
+
+                <input type="button" value="Atualizar" class="enviar" onclick="atualizarProduto()">
             </form>
-            <p id="resposta"></p>
         </main>
 
         <footer>

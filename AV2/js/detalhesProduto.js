@@ -67,9 +67,6 @@ function detalheProduto(){
                 var tdEditar = novaLinha.insertCell();
                 tdEditar.innerHTML = "<a href='editarProduto.html?codBarra="+obj[linha].codBarra+"'>Editar</a>";
 
-                var tdExcluir = novaLinha.insertCell();
-                tdExcluir.innerHTML = "<button onclick='removerProduto(this.tdCod)'>Excluir</button>";
-
                 var img = document.createElement("img");
                 img.src = "imagens/"+obj[linha].link;
                 img.style.width = "30%";
@@ -83,9 +80,10 @@ function detalheProduto(){
         
         }
     }
-    xmlHttp.open("GET", "http://localhost/3DAW/AV2/detalheProduto.php?codBarra="+codBarra, true);
+    xmlHttp.open("GET", "http://localhost/3DAW/AV2/php/detalheProduto.php?codBarra="+codBarra, true);
     xmlHttp.send();
     console.log("requisição enviada");
 
     
 }
+
